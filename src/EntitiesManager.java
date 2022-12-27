@@ -18,14 +18,23 @@ public class EntitiesManager {
         entities.add(engine.user);
 
         //pozioma ściana na pozycji x 100 y 100 o dlugości 200 i wysokości 20
-        entities.add(new Obstacle(100,100, 200,20));
+        entities.add(new Obstacle(100,100, 800,20));
+        entities.add(new Obstacle(100,700, 800,20));
 
         //pionowa ściana na pozycji x 100 y 100 o dlugości 20 i wysokości 200
-        entities.add(new Obstacle(100,100, 20,200));
+        entities.add(new Obstacle(100,100, 20,600));
+        entities.add(new Obstacle(200,100, 20,200));
+        entities.add(new Obstacle(200,100, 20,200));
+        entities.add(new Obstacle(880,100, 20,400));
+        entities.add(new Obstacle(880,100, 20,600));
+
+
+
+
 
         entities.add(new Quest(300,300,50,50,8,13));
 
-        entities.add(new Gate(800, 500, 30,60));
+        entities.add(new Gate(880, 500, 20,60));
     }
 
     public void drawAll(Graphics graphics){

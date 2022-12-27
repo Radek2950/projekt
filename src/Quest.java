@@ -40,7 +40,7 @@ public class Quest extends BasicOperations{
     @Override
     public void draw(Graphics graphics) {
         graphics.setColor(Color.CYAN);
-        graphics.fillRect(dataset.x, dataset.y, dataset.sizex, dataset.sizey);
+        graphics.fillRect((int)dataset.x, (int)dataset.y, (int)dataset.sizex, (int)dataset.sizey);
     }
 
     @Override

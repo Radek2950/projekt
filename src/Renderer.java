@@ -20,8 +20,7 @@ public class Renderer extends JFrame {
         KeyListener listener = new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
-                if (e.getKeyCode() == KeyEvent.VK_ESCAPE)
-                    engine.exit();
+
             }
 
             @Override

@@ -19,18 +19,18 @@ public class User extends BasicOperations{
 
     @Override
     public void draw(Graphics graphics) {
-        graphics.drawImage(image, dataset.x, dataset.y, dataset.sizex, dataset.sizey, null);
+        graphics.drawImage(image, (int)dataset.x, (int)dataset.y, (int)dataset.sizex, (int)dataset.sizey, null);
     }
 
     @Override
     public void doSomething() {
-        if (engine.getRenderer().up && dataset.y > 0)
-            dataset.y -= 1.0;
+       if (engine.getRenderer().up && dataset.y > 0)
+            dataset.y -= 0.1;
         if (engine.getRenderer().down && dataset.y + dataset.sizey + 34 < 768)
-            dataset.y += 1.0;
+            dataset.y += 0.1;
         if (engine.getRenderer().left && dataset.x >= 0)
-            dataset.x -= 1.0;
+            dataset.x -= 0.1;
         if (engine.getRenderer().right && dataset.x + dataset.sizex + 12 < 1024)
-            dataset.x += 1.0;
+           dataset.x += 0.1;
     }
 }

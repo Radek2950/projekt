@@ -10,6 +10,6 @@ public abstract class BasicOperations {
 
     public class DataSet
     {
-        int x = 0, y = 0, sizex = 0, sizey = 0;
+        double x = 0, y = 0, sizex = 0, sizey = 0;
     }
 }
