@@ -1,5 +1,10 @@
 import java.awt.*;
 
+/**
+ *  Klasa dziedziczy po BasicOperations sa to sciany naszego labiryntu
+ *
+ */
+
 public class Obstacle extends BasicOperations{
 
     public Obstacle(int x, int y, int sizex, int sizey){

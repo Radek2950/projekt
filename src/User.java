@@ -1,5 +1,9 @@
 import java.awt.*;
 
+/**
+ * Klasa dziedzica po BasicOperations i odpwoiedzialna za wyrysowanie naszego uzytkownika i jego ruchh
+ */
+
 public class User extends BasicOperations{
 
     private Engine engine;
@@ -15,6 +19,9 @@ public class User extends BasicOperations{
         this.engine = engine;
     }
 
+    /**
+     * Wczytujemny obiekt kalsy image ktory jest naszym obiektem ktorym poruszamy się po labiryncie
+     */
     private Image image = Toolkit.getDefaultToolkit().createImage("user.png");
 
     @Override
@@ -22,6 +29,9 @@ public class User extends BasicOperations{
         graphics.drawImage(image, (int)dataset.x, (int)dataset.y, (int)dataset.sizex, (int)dataset.sizey, null);
     }
 
+    /**
+     * Funkcja odpowiedzialna za przesuwanie sie naszego obiektu (kwadratu)
+     */
     @Override
     public void doSomething() {
        if (engine.getRenderer().up && dataset.y > 0)

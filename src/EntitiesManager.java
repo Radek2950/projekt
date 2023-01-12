@@ -1,27 +1,49 @@
 import java.awt.*;
 import java.util.ArrayList;
 
+/**
+ *Klasa zamjujaca sie zarzadzeniem naszymi obiektami takimi jak: quest, obstacle,user
+ */
 public class EntitiesManager {
 
     private Engine engine;
 
+    /**
+     *Konstruktor w ktorym jest przpisywany engine ktory jest przekazywany w konstruktorze w klasie Engin i ładowana funkcja loadMap
+     * @param engine przekazuje engine
+     */
     public EntitiesManager(Engine engine){
         this.engine = engine;
         loadMap();
     }
 
+
+    /**
+     * Lista przechowująca wszystke klasy dziedziczące po BasicOperations czyli nasze obiekty ktore rysujemy na ekranie
+     */
     public ArrayList<BasicOperations> entities = new ArrayList<>();
 
+    /**
+     * Funckja ładująca mapę
+     */
+
     public void loadMap(){
+        /**
+         * Stworzenie obiektu którym porusza sie użytkownik i ustawienie jego pozycji na mapie w naszym przypadku będzie to na środku mapy
+         */
         engine.user = new User(engine, 500,500);
 
         entities.add(engine.user);
 
-        //pozioma ściana na pozycji x 100 y 100 o dlugości 200 i wysokości 20
+        /**
+         * Dodanie obiektow, którą odpowiadają naszym ścianom
+         * Zostaje tutaj nadane im wspolrzedne gdzie dana sciana ma sie znajdowac i je rozmiary
+         * W projekcie wystepuja sciany poziome i pionowe
+         */
         entities.add(new Obstacle(100,100, 800,20));
         entities.add(new Obstacle(100,700, 800,20));
 
-        //pionowa ściana na pozycji x 100 y 100 o dlugości 20 i wysokości 200
+
 
         entities.add(new Obstacle(450,450, 140,20));
         entities.add(new Obstacle(450,450, 20,80));
@@ -67,9 +89,11 @@ public class EntitiesManager {
         entities.add(new Obstacle(880,560, 20,140));
 
 
-
-
-
+        /**
+         * Dodanie zagadek matematycznych
+         * Usalamy wspołrzedne gdzie maja sie znajdowac nasze zagadki i ich wielkosc
+         * Ustalamy rowniez wartosci jaka maja wystepowac w naszej zagadce
+         */
 
         entities.add(new Quest(550,660,25,25,14,9));
         entities.add(new Quest(375,148,25,25,10,15));
@@ -78,16 +102,30 @@ public class EntitiesManager {
         entities.add(new Quest(300,660,25,25,8,7));
         entities.add(new Quest(180,365,25,25,9,12));
         entities.add(new Quest(760,150,25,25,4,23));
-        entities.add(new Quest(835,370,25,25,4,23));
+        entities.add(new Quest(835,370,25,25,8,15));
+
+        /**
+         * Ustawienie wyjśscia(czyli miejsca docelowego do którego dąży gracz aby skonczyc rozrywkę)
+         */
+
         entities.add(new Gate(880, 500, 20,60));
     }
 
+    /**
+     * Metoda odpowiedzialna za wyrysowanie naszej grafiki
+     * @param graphics przekazuje grafike
+     */
     public void drawAll(Graphics graphics){
         for(BasicOperations bo : entities)
         {
             bo.draw(graphics);
         }
     }
+
+    /**
+     * Metoda która wywoluje zrobienie czegos to co to jest zalezy od danej obiektu.
+     * Np:Czy jest to poruszanie sie naszym użytkownikiem czy wyświetlenie questa
+     */
 
     public void callAll(){
         detectCollision();
@@ -97,6 +135,11 @@ public class EntitiesManager {
         }
     }
 
+
+    /**
+     * Sprawdzenie co znajduje sie w oklicy naszego uzytkownika jak jest to sciana to wywoływana jest metoda ktora przenosi nas na poczatek rozgrywki,
+     * jesli jest to quest to jest on nam wyswietlany na ekranie a jak gate to mamy zakonczenie rozgrywki
+     */
     public void detectCollision(){
         for (BasicOperations bo : entities) {
             if (bo.dataset.x < engine.user.dataset.x + engine.user.dataset.sizex &&

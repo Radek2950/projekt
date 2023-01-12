@@ -1,5 +1,9 @@
 import java.awt.*;
 
+/**
+ * Klasa dziedziczy po BasicOperations sa to elemnty naszej gry
+ * Klasa odpowiedzialna za nasze wyjście z gry
+ */
 public class Gate extends BasicOperations{
 
     public Gate(int x, int y, int sizex, int sizey){
